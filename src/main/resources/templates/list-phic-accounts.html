@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List of PHIC accounts</title>
+
+    <!-- reference CSS file, what is rel? "@" symbol reference to the context path of your application -->
+    <link rel="stylesheet" th:href="@{/css/list-phic.css}"/>
+
+    <!-- reference remote 3rd Party CSS Libraries like Bootstrap> -->
+    <link rel="stylesheet" th:href="@{/bootstrap-5.0.1-dist/css/bootstrap.min.css}"/>
+    <!-- Bootstrap CSS from cdn remotely, depends on your network, may not work in pax network-->
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+</head>
+<body>
+    <div class="container">
+        <h2 class="summary">These are all the PHIC accounts that currently working</h2>
+        <hr>
+        <a th:href="@{/}">Back to home</a>
+        <hr>
+        <table class="table table-striped table-hover">
+            <!-- Build table by looping over phicAccounts-->
+            <thead class="table-primary">
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>SerialNumber</th>
+                <th>Processor</th>
+                <th>Status</th>
+                <th>Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tempPhic : ${phicAccounts}" >
+                <td th:text="${tempPhic.username}" />
+                <td th:text="${tempPhic.password}" />
+                <td th:text="${tempPhic.serialNum}" />
+                <td th:text="${tempPhic.processor}" />
+                <td th:text="${tempPhic.status}" />
+                <td>
+                    <a href=""
+                       class="btn btn-info btn-sm">
+                        Stop/Run
+                    </a> |
+                    <a th:href="@{/phic-accounts/delete(username=${tempPhic.username}, password=${tempPhic.password}, serialNum=${tempPhic.serialNum})}"
+                        class="btn btn-danger btn-sm"
+                        onclick="if(!(confirm('Are you sure you want to delete this PHIC?')))">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

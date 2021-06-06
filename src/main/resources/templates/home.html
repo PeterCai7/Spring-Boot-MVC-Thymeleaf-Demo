@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Uptrillion Handler</title>
+
+    <!-- reference remote 3rd Party CSS Libraries like Bootstrap> -->
+    <link rel="stylesheet" th:href="@{/bootstrap-5.0.1-dist/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-primary">Welcome to Uptrillion Handler management page</h1>
+    </div>
+    <hr>
+    <div class="container">
+        <!-- Content here -->
+        <div class="row">
+            <div class="col">
+                <input type="button" value="Add a new PHIC account"
+                    onclick="window.location.href='/phic-accounts/showFormForAdd'; return false;"
+                    class="btn btn-primary"/>
+            </div>
+            <div class="col">
+                <input type="button" value="List of PHIC accounts"
+                       onclick="window.location.href='/phic-accounts/list'; return false;"
+                       class="btn btn-primary"/>
+            </div>
+            <div class="col">
+                Coming soon ...
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a new PHIC</title>
+
+    <!-- reference remote 3rd Party CSS Libraries like Bootstrap> -->
+    <link rel="stylesheet" th:href="@{/bootstrap-5.0.1-dist/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div class="container">
+        <h2 class="summary">Add a new PHIC account to list.</h2>
+        <hr>
+        <form action="#" th:action="@{/phic-accounts/save}"
+                         th:object="${newPHICAccount}" method="POST">
+            <input type="text" th:field="*{username}"
+                    class="form-control mb-4 col-4" placeholder="Username">
+            <input type="text" th:field="*{password}"
+                   class="form-control mb-4 col-4" placeholder="Password">
+            <input type="text" th:field="*{serialNum}"
+                   class="form-control mb-4 col-4" placeholder="Serial Number">
+            <input type="text" th:field="*{processor}"
+                   class="form-control mb-4 col-4" placeholder="Processor">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <hr>
+        <a th:href="@{/phic-accounts/list}">Back to PHIC list</a>
+    </div>
+</body>
+</html>
